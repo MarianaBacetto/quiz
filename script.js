@@ -1,41 +1,41 @@
 const questions = [
     {
-        question: "Quanto é 2+2?"
+        question: "Quanto é 2+2?",
         answers: [
-            { id: 1, text: "1", correct: false }
-            { id: 2, text: "2", correct: false }
-            { id: 3, text: "3", correct: false }
-            { id: 4, text: "4", correct: true }
+            { id: 1, text: "1", correct: false },
+            { id: 2, text: "2", correct: false },
+            { id: 3, text: "3", correct: false },
+            { id: 4, text: "4", correct: true },
         ],
     },
 
     {
-        question: "Quanto é 2+2?"
+        question: "Quanto é 2+2?",
         answers: [
-            { id: 1, text: "1", correct: false }
-            { id: 2, text: "2", correct: false }
-            { id: 3, text: "3", correct: false }
-            { id: 4, text: "4", correct: true }
+            { id: 1, text: "1", correct: false },
+            { id: 2, text: "2", correct: false },
+            { id: 3, text: "3", correct: false },
+            { id: 4, text: "4", correct: true },
         ],
     },
 
     {
-        question: "Quanto é 2+2?"
+        question: "Quanto é 2+2?",
         answers: [
-            { id: 1, text: "1", correct: false }
-            { id: 2, text: "2", correct: false }
-            { id: 3, text: "3", correct: false }
-            { id: 4, text: "4", correct: true }
+            { id: 1, text: "1", correct: false },
+            { id: 2, text: "2", correct: false },
+            { id: 3, text: "3", correct: false },
+            { id: 4, text: "4", correct: true },
         ],
     },
 
     {
-        question: "Quanto é 2+2?"
+        question: "Quanto é 2+2?",
         answers: [
-            { id: 1, text: "1", correct: false }
-            { id: 2, text: "2", correct: false }
-            { id: 3, text: "3", correct: false }
-            { id: 4, text: "4", correct: true }
+            { id: 1, text: "1", correct: false },
+            { id: 2, text: "2", correct: false },
+            { id: 3, text: "3", correct: false },
+            { id: 4, text: "4", correct: true },
         ],
     },
 ]
@@ -54,4 +54,26 @@ function startQuiz() {
     showQuestion();
 }
 
-function showQuestion
+function resetState() {
+    nextButton.style.display = "none";
+    while (answerButtons.firstChild) {
+        answerButtons.removeChild(answerButtons.firstChild);
+    }
+}
+
+function showQuestion() {
+    resetState();
+    let currentQuestion = questions[currentQuestionIndex];
+    let questionNo = currentQuestionIndex + 1;
+    questionElement.innerHTML = questionNo + "." + currentQuestion.question;
+
+    currentQuestion.answers.forEach((answer) => {
+        const button = document.createElement("button");
+        button.innerHTML = answer.text;
+        button.dataset.id = answer.id;
+        button.classList.add("btn");
+        answerButtons.appendChild(button);
+    })
+}
+
+startQuiz();
